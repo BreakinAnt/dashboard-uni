@@ -1,7 +1,9 @@
 <?php
 
+use App\Models\Dashboard\University;
 use Illuminate\Foundation\Inspiring;
 use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\Http;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,3 +19,20 @@ use Illuminate\Support\Facades\Artisan;
 Artisan::command('inspire', function () {
     $this->comment(Inspiring::quote());
 })->purpose('Display an inspiring quote');
+
+Artisan::command('test', function (){
+    $response = Http::get('http://universities.hipolabs.com/search?country=United+States');
+    $data = $response->collect();
+
+    $counter = 1;
+    foreach($data as $uni){
+        if($counter > 100){
+            break;
+        }
+        
+        University::create($uni);
+        $counter++;
+    }
+
+    dd('done');
+});
