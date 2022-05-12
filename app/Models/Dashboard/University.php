@@ -18,4 +18,15 @@ class University extends Model
     {
         return $this->belongsToMany(User::class, 'user_university', 'university_id', 'user_id');
     }
+
+    public function setDomainsAttribute(array $value)
+    {
+        $this->attributes['domains'] = json_encode($value);
+    }
+
+    
+    public function setWebPagesAttribute(array $value)
+    {
+        $this->attributes['web_pages'] = json_encode($value);
+    }
 }
