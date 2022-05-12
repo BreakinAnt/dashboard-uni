@@ -20,7 +20,7 @@ Artisan::command('inspire', function () {
     $this->comment(Inspiring::quote());
 })->purpose('Display an inspiring quote');
 
-Artisan::command('test', function (){
+Artisan::command('dev-uni-fill-table', function (){
     $response = Http::get('http://universities.hipolabs.com/search?country=United+States');
     $data = $response->collect();
 
