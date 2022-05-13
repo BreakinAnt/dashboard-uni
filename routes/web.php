@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Dashboard\DashboardController;
+use App\Http\Controllers\Dashboard\DashboardUniversityController;
 use App\Http\Controllers\Dashboard\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -15,9 +17,16 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::prefix('dashboard')->name('dashboard.')->group(function () { 
+    
+    Route::middleware('auth')->group(function() {
+        Route::get('/', [DashboardController::class, 'index'])->name('index.get');
+
+        Route::get('/universidade/inscrever/{university}', [DashboardUniversityController::class, 'subscribe'])->name('university.subscribe.get');
+    });
 
     //LOGIN
     Route::get('/login', [UserController::class, 'index'])->name('user.login.get');
     Route::post('/login', [UserController::class, 'login'])->name('user.login.post');
     Route::post('/signup', [UserController::class, 'signup'])->name('user.signup.post');
+
 });

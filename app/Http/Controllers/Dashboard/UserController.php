@@ -40,7 +40,7 @@ class UserController extends Controller
         if(Hash::check($req->password, $user->password)){
             Auth::guard('web')->login($user);
 
-            return redirect()->route('dashboard.user.login.get')->with(['message' => 'Usuário logado']);
+            return redirect()->route('dashboard.index.get');
         }
 
         return redirect()->route('dashboard.user.login.get')->withErrors(['Email/senha errada!']);
