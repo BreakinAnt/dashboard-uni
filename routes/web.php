@@ -24,12 +24,15 @@ Route::prefix('dashboard')->name('dashboard.')->group(function () {
 
         Route::get('/logout', [UserController::class, 'logout'])->name('user.logout.get');
 
-        Route::get('/universidade/inscrever/{university}', [DashboardUniversityController::class, 'subscribe'])->name('university.subscribe.get');
+        Route::prefix('universidade')->name('university.')->group(function () { 
+            Route::get('/inscrever/{university}', [DashboardUniversityController::class, 'subscribe'])->name('subscribe.get');
+        });
     });
 
-    //LOGIN
-    Route::get('/login', [UserController::class, 'index'])->name('user.login.get');
-    Route::post('/login', [UserController::class, 'login'])->name('user.login.post');
-    Route::post('/signup', [UserController::class, 'signup'])->name('user.signup.post');
+    Route::prefix('usuario')->name('user.')->group(function () { 
+        Route::get('/login', [UserController::class, 'index'])->name('login.get');
+        Route::post('/login', [UserController::class, 'login'])->name('login.post');
+        Route::post('/signup', [UserController::class, 'signup'])->name('signup.post');
+    });
 
 });
