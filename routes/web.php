@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Dashboard\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +14,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::prefix('dashboard')->name('dashboard.')->group(function () { 
+
+    //LOGIN
+    Route::get('/login', [UserController::class, 'index'])->name('user.login.get');
+    Route::post('/login', [UserController::class, 'login'])->name('user.login.post');
+    Route::post('/signup', [UserController::class, 'signup'])->name('user.signup.post');
 });
