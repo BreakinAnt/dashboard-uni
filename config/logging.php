@@ -17,7 +17,7 @@ return [
     |
     */
 
-    'default' => env('LOG_CHANNEL', 'stack'),
+    'default' => env('LOG_CHANNEL', 'daily'),
 
     /*
     |--------------------------------------------------------------------------
@@ -36,7 +36,7 @@ return [
 
     'channels' => [
         'stack' => [
-            'driver' => 'stack',
+            'driver' => 'daily',
             'channels' => ['single'],
             'ignore_exceptions' => false,
         ],
@@ -99,6 +99,11 @@ return [
         'emergency' => [
             'path' => storage_path('logs/laravel.log'),
         ],
+
+        'user-signup-errors' => [
+            'driver' => 'daily',
+            'path' => storage_path('logs/user_signup/user-signup-errors.log')
+        ]
     ],
 
 ];
