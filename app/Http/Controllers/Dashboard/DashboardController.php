@@ -11,11 +11,12 @@ class DashboardController extends Controller
 {
     public function index(Request $req)
     {
-        $data = ['user', 'universities'];
+        $data = ['user', 'universities', 'universitiesIn'];
 
         $user = Auth::guard('web')->user();
-        $universities = (isset($req->name) ? University::where('name', 'like', "%$req->name%") : University::query())->get(['id', 'alpha_two_code', 'name', 'status_id']);
-        
+        $universitiesIn = $user->universities;
+        $universities = (isset($req->name) ? University::where('name', 'like', "%$req->name%") : University::query())->whereNotIn('id', $universitiesIn->pluck('id'))->get(['id', 'alpha_two_code', 'name', 'status_id']);
+  
         return view('dashboard.home.index', compact($data));
     }
 }

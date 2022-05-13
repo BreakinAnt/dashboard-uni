@@ -28,6 +28,28 @@
             {{ Form::button('Pesquisar', ['type' => 'submit']) }}
         {{ Form::close() }}
     </div>
+
+    <h3>Universidades Inscritas:</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>País</th>
+                <th>Nome</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach($universitiesIn as $uni)            
+                <tr>
+                    <td>{{ $uni->alpha_two_code }}</td>
+                    <td>{{ $uni->name }}</td>
+                    <td>{{ $uni->status->name }}</td>
+                </tr>
+            @endforeach
+        </tbody>
+    </table>
+
+    <h3>Universidades:</h3>
     <table>
         <thead>
             <tr>
