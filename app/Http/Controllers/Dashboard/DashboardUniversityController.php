@@ -14,6 +14,15 @@ class DashboardUniversityController extends Controller
     {
         $user = Auth::guard('web')->user();
         
+        $alreadySubscribed = UserUniversity::where([
+            'user_id' => $user->id,
+            'university_id' => $university->id
+        ])->first();
+
+        if($alreadySubscribed){
+            return redirect()->route('dashboard.index.get')->withErrors(["Você já está inscrito na universidade $university->name."]);
+        }
+
         UserUniversity::create([
             'user_id' => $user->id,
             'university_id' => $university->id
