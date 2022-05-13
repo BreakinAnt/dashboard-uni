@@ -18,7 +18,7 @@
         @endif
     </div>
     <div>
-        Bem vindo, <b>{{ $user->name }}</b>.
+        Bem vindo, <b>{{ $user->name }}</b>. <a href="{{ route('dashboard.user.logout.get') }}">Desconectar</a>
     </div>
     <div>
         {{ Form::open(['route' => 'dashboard.index.get', 'method' => 'GET']) }}

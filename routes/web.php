@@ -19,7 +19,10 @@ use Illuminate\Support\Facades\Route;
 Route::prefix('dashboard')->name('dashboard.')->group(function () { 
     
     Route::middleware('auth')->group(function() {
+        
         Route::get('/', [DashboardController::class, 'index'])->name('index.get');
+
+        Route::get('/logout', [UserController::class, 'logout'])->name('user.logout.get');
 
         Route::get('/universidade/inscrever/{university}', [DashboardUniversityController::class, 'subscribe'])->name('university.subscribe.get');
     });
