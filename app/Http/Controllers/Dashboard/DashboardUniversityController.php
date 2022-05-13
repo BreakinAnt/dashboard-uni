@@ -19,15 +19,21 @@ class DashboardUniversityController extends Controller
             'university_id' => $university->id
         ])->first();
 
+        $errors = [];
         if($alreadySubscribed){
-            return redirect()->route('dashboard.index.get')->withErrors(["Você já está inscrito na universidade $university->name."]);
+            array_push($errors, "Você já está inscrito na universidade $university->name.");
         }
-
+        if($university->status->name !== 'Aprovado'){
+            array_push($errors, "Só é possivel se inscrever em universidades aprovadas.");
+        }
+        if(count($errors)){
+            return redirect()->route('dashboard.index.get')->withErrors($errors);
+        }
+        
         UserUniversity::create([
             'user_id' => $user->id,
             'university_id' => $university->id
         ]);
-
         return redirect()->route('dashboard.index.get')->withMessage("Inscrição na $university->name realizado com sucesso!");
     }
 }
