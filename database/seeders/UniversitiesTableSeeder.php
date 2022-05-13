@@ -29,7 +29,8 @@ class UniversitiesTableSeeder extends Seeder
                 'country' => $uni['country'],
                 'domains' => $uni['domains'],
                 'name' => $uni['name'],
-                'web_pages' => $uni['web_pages']
+                'web_pages' => $uni['web_pages'],
+                'status_id' => 1
             ]);
             $counter++;
         }

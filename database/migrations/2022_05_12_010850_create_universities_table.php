@@ -20,6 +20,7 @@ class CreateUniversitiesTable extends Migration
             $table->json('domains');
             $table->string('name');
             $table->json('web_pages');
+            $table->unsignedBigInteger('status_id');
             $table->timestamps();
             $table->softDeletes();
         });
