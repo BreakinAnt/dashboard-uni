@@ -23,4 +23,9 @@ class User extends Authenticatable
 	{
 		$this->attributes['access_token'] = hash('sha256', $value);
 	}
+
+    public function universities()
+    {
+        return $this->belongsToMany(University::class, 'user_university', 'user_id', 'university_id');
+    }
 }
