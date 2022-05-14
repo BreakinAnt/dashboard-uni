@@ -186,6 +186,9 @@ return [
         'description' => 'descrição',
         'password_confirmation' => 'confirmação da senha',
         'current_password' => 'senha atual',
+        'alpha_two_code' => 'Codigo do País (2 letras)',
+        'domains' => 'Dominio',
+        'web_pages' => 'Página Web',
     ],
 
 ];
