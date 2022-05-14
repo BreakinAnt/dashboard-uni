@@ -71,6 +71,10 @@ return [
             'driver' => 'eloquent',
             'model' => App\Models\Dashboard\User::class,
         ],
+        'api' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Dashboard\User::class,
+        ]
 
         // 'users' => [
         //     'driver' => 'database',
@@ -93,14 +97,14 @@ return [
     |
     */
 
-    'passwords' => [
-        'users' => [
-            'provider' => 'users',
-            'table' => 'password_resets',
-            'expire' => 60,
-            'throttle' => 60,
-        ],
-    ],
+    // 'passwords' => [
+    //     'users' => [
+    //         'provider' => 'users',
+    //         'table' => 'password_resets',
+    //         'expire' => 60,
+    //         'throttle' => 60,
+    //     ],
+    // ],
 
     /*
     |--------------------------------------------------------------------------
