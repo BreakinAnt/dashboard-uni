@@ -12,7 +12,7 @@ class University extends Model
     use SoftDeletes;
 
     protected $fillable = ['alpha_two_code', 'country', 'domains', 'name', 'web_pages', 'status_id'];
-    protected $hidden = ['created_at', 'updated_at', 'deleted_at'];
+    protected $hidden = ['pivot', 'status_id', 'created_at', 'updated_at', 'deleted_at'];
 
     public function users()
     {
