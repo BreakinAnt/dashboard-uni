@@ -26,6 +26,7 @@ Route::prefix('dashboard')->name('dashboard.')->group(function () {
 
         Route::prefix('universidade')->name('university.')->group(function () { 
             Route::get('/inscrever/{university}', [DashboardUniversityController::class, 'subscribe'])->name('subscribe.get');
+            Route::post('/sugestao', [DashboardUniversityController::class, 'addSuggestion'])->name('suggestion.post');
         });
     });
 
