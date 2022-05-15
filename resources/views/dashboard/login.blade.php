@@ -11,7 +11,7 @@
     <div>
         @if($errors->any())
             @foreach($errors->all() as $error)
-                <div>{{ $error }}</div>
+                <div class="text-danger">{{ $error }}</div>
             @endforeach
         @endif
         @if(session('message'))
