@@ -20,6 +20,5 @@ class FactorySeeder extends Seeder
         University::factory()->count(5)->create();
         User::factory()->count(5)->create();
         UserUniversity::factory()->count(5)->create();
-        UniversitySuggestion::factory()->count(2)->create();
     }
 }

@@ -35,7 +35,7 @@ class UserAPIController extends Controller
         }
 
         $user->tokens()->delete();
-        $token = $user->createToken(Str::random(200))->plainTextToken;
+        $token = $user->createToken('auth_token')->plainTextToken;
 
         return JsonMsg::create(compact($data));
     }
@@ -44,12 +44,11 @@ class UserAPIController extends Controller
     {
         $data = ['user'];
 
-        $user = User::find(Auth('sanctum')->user()->id)
-        ->with([
+        $user = User::with([
             'universities' => function($cb){ return $cb->with('status');}
         ])
-        ->get(); 
-
+        ->find(Auth('sanctum')->user()->id); 
+            dd($user->tokens);
         return JsonMsg::create(compact($data));
     }
 }

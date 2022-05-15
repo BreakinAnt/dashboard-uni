@@ -2,6 +2,7 @@
 
 namespace Database\Factories\Dashboard;
 
+use App\Models\Dashboard\UniversityStatus;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class UniversityFactory extends Factory
@@ -16,9 +17,10 @@ class UniversityFactory extends Factory
         return [
             'alpha_two_code' => 'BR',
             'country' => 'Brasil',
-            'domains' => json_encode([$this->faker->url()]),
+            'domains' => [$this->faker->url()],
             'name' => $this->faker->company(),
-            'web_pages' => json_encode([$this->faker->url()]),
+            'web_pages' => [$this->faker->url()],
+            'status_id' => UniversityStatus::inRandomOrder()->first()->id
         ];
     }
 }
