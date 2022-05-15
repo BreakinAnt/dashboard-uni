@@ -30,6 +30,7 @@ Artisan::command('dev-uni-fill-table', function (){
             break;
         }
         
+        $uni['status_id'] = 1;
         University::create($uni);
         $counter++;
     }
