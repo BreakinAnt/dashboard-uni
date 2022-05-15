@@ -9,6 +9,6 @@ You'll need:
 - You can run ``` php artisan db:seed --class=FactorySeeder ``` to populate your database with fake data*.
 - Start the project by running ``` php artisan serve ```
 
-* You can also run ``` php artisan dev-uni-fill-table ``` to do the same thing
+\* You can also run ``` php artisan dev-uni-fill-table ``` to do the same thing
 
 Don't forget to configure your .env correctly.
