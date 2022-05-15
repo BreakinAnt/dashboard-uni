@@ -48,7 +48,7 @@ class UserAPIController extends Controller
             'universities' => function($cb){ return $cb->with('status');}
         ])
         ->find(Auth('sanctum')->user()->id); 
-            dd($user->tokens);
+
         return JsonMsg::create(compact($data));
     }
 }
