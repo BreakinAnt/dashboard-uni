@@ -23,11 +23,7 @@ class UserAPIController extends Controller
             ->first();
 
         $errors = [];
-        if(!$user){
-            array_push($errors, 'E-mail não está cadastrado no sistema.');
-            return JsonMsg::create($errors, true, 404);
-        }      
-        if(!Hash::check($req->password, $user->password)){
+        if(!$user || !Hash::check($req->password, $user->password)){
             array_push($errors, 'Dados incorretos.');
         }
         if(count($errors)){
